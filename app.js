@@ -1,12 +1,11 @@
-// Инициализация Telegram WebApp API
+// Инициализация Telegram WebApp SDK
 const tg = window.Telegram?.WebApp;
 if (tg) {
-    tg.expand(); // Разворачиваем окно во весь экран
+    tg.expand();
     tg.ready();
 }
 
-// 1. НАСТРОЙКА ДАТЫ ОТНОШЕНИЙ (Год, Месяц - 1, День, Часы, Минуты)
-// Месяцы в JS считаются с 0 (10 = Ноябрь)
+// 1. НАСТРОЙКА ТАЙМЕРА ДАТЫ (10 ноября 2025 года)
 const startDate = new Date(2025, 10, 10, 0, 0, 0);
 
 function updateTimer() {
@@ -27,37 +26,25 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 updateTimer();
 
-const CITY_1 = [48.6482, 9.4512]; // Координаты Вашего города
-const CITY_2 = [50.4501, 30.5234]; // Координаты Города девушки
+// 2. ИНИЦИАЛИЗА КАРТЫ (OpenStreetMap)
+const CITY_1 = [48.6482, 9.4512];  // Кирхайм
+const CITY_2 = [50.4501, 30.5234]; // Киев
 
-// Создание карты
-const map = L.map('map', { zoomControl: false }).setView([ (CITY_1[0] + CITY_2[0])/2, (CITY_1[1] + CITY_2[1])/2 ], 5);
+const map = L.map('map', { zoomControl: false }).setView([(CITY_1[0] + CITY_2[0]) / 2, (CITY_1[1] + CITY_2[1]) / 2], 5);
 
-// Тёмные стильные тайлы OpenStreetMap
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
 }).addTo(map);
 
-// Маркеры городов
 L.marker(CITY_1).addTo(map).bindPopup("Ты 🤍");
 L.marker(CITY_2).addTo(map).bindPopup("Я ✨");
 
-// Линия между городами
 const latlngs = [CITY_1, CITY_2];
-const polyline = L.polyline(latlngs, { color: '#f43f5e', weight: 3, dashArray: '5, 10' }).addTo(map);
-
-// Авто-масштаб карты под оба города
+const polyline = L.polyline(latlngs, { color: '#f43f5e', weight: 4, dashArray: '6, 12' }).addTo(map);
 map.fitBounds(polyline.getBounds(), { padding: [30, 30] });
 
-// Тактильный отклик при кликах по карточкам
-document.querySelectorAll('.polaroid-card').forEach(card => {
-    card.addEventListener('click', () => {
-        if (tg?.HapticFeedback) {
-            tg.HapticFeedback.impactOccurred('light');
-        }
-    });
-});
-// Логика музыки
+// 3. УПРАВЛЕНИЕ МУЗЫКОЙ
 const music = document.getElementById('bg-music');
 const musicBtn = document.getElementById('music-btn');
 
@@ -66,9 +53,8 @@ if (musicBtn && music) {
         if (music.paused) {
             music.play().then(() => {
                 musicBtn.innerText = '⏸ Пауза';
-            }).catch((error) => {
-                console.error("Ошибка воспроизведения:", error);
-                alert("Не удалось загрузить файл music.mp3. Проверь, загружен ли он на GitHub!");
+            }).catch((err) => {
+                console.log("Воспроизведение музыкального файла пока недоступно или загружается:", err);
             });
         } else {
             music.pause();
