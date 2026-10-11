@@ -10,12 +10,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
 </head>
-<!-- Фоновая музыка и кнопка управления -->
-<audio id="bg-music" src="music.mp3" loop></audio>
-
-<div class="music-player">
-    <button id="music-btn" class="music-toggle-btn">🎵 Включить музыку</button>
-</div>
 <body>
     <div class="container">
         <!-- Заголовок и Секундомер -->
@@ -34,7 +28,12 @@
             <h2>Расстояние — лишь цифры 📍</h2>
             <div id="map"></div>
         </section>
+<!-- Фоновая музыка и кнопка управления -->
+<audio id="bg-music" src="music.mp3" loop></audio>
 
+<div class="music-player">
+    <button id="music-btn" class="music-toggle-btn">🎵 Включить музыку</button>
+</div>
         <!-- Polaroid Галерея -->
         <section class="gallery-section">
             <h2>Наши Моменты 📸</h2>
