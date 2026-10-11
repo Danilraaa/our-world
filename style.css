@@ -24,11 +24,15 @@ body {
     width: 100%;
     max-width: 480px;
     padding: 16px;
+    margin: 0 auto; /* Центрируем сам контейнер */
 }
 
-/* Шапка и плеер */
 .header {
+    width: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем все элементы внутри шапки */
     margin-bottom: 20px;
 }
 
@@ -37,6 +41,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 5px;
     margin-bottom: 16px;
 }
 
@@ -44,13 +49,15 @@ body {
     background: linear-gradient(135deg, #f43f5e, #e11d48);
     color: #ffffff;
     border: none;
-    padding: 10px 22px;
+    padding: 12px 24px;
     border-radius: 25px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
     transition: transform 0.2s ease, background 0.3s ease;
+    display: inline-block;
+    margin: 0 auto; /* Заставляем кнопку встать ровно по центру */
 }
 
 .music-toggle-btn:active {
