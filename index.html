@@ -14,6 +14,12 @@
     <div class="container">
         <!-- Заголовок и Секундомер -->
         <header class="header">
+            <!-- Фоновая музыка и кнопка управления -->
+            <audio id="bg-music" src="music.mp3" loop></audio>
+            
+            <div class="music-player">
+                <button id="music-btn" class="music-toggle-btn">🎵 Включить музыку</button>
+            </div>
             <h1>Мы вместе уже ✨</h1>
             <div id="timer" class="timer-box">
                 <div class="time-unit"><span id="days">0</span><label>Дней</label></div>
@@ -28,12 +34,6 @@
             <h2>Расстояние — лишь цифры 📍</h2>
             <div id="map"></div>
         </section>
-<!-- Фоновая музыка и кнопка управления -->
-<audio id="bg-music" src="music.mp3" loop></audio>
-
-<div class="music-player">
-    <button id="music-btn" class="music-toggle-btn">🎵 Включить музыку</button>
-</div>
         <!-- Polaroid Галерея -->
         <section class="gallery-section">
             <h2>Наши Моменты 📸</h2>
