@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Наш Мир 🤍</title>
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Leaflet CSS (Карта) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок и Секундомер -->
+        <header class="header">
+            <h1>Мы вместе уже ✨</h1>
+            <div id="timer" class="timer-box">
+                <div class="time-unit"><span id="days">0</span><label>Дней</label></div>
+                <div class="time-unit"><span id="hours">0</span><label>Часов</label></div>
+                <div class="time-unit"><span id="minutes">0</span><label>Минут</label></div>
+                <div class="time-unit"><span id="seconds">0</span><label>Секунд</label></div>
+            </div>
+        </header>
+
+        <!-- Интерактивная Карта -->
+        <section class="map-section">
+            <h2>Расстояние — лишь цифры 📍</h2>
+            <div id="map"></div>
+        </section>
+
+        <!-- Polaroid Галерея -->
+        <section class="gallery-section">
+            <h2>Наши Моменты 📸</h2>
+            <div class="polaroid-grid">
+                <div class="polaroid-card">
+                    <img src="https://picsum.photos/400/400?random=1" alt="Воспоминание 1">
+                    <p class="caption">Тот самый лучший день ✨</p>
+                </div>
+                <div class="polaroid-card rotate-left">
+                    <img src="https://picsum.photos/400/400?random=2" alt="Воспоминание 2">
+                    <p class="caption">Первый общий созвон ☕</p>
+                </div>
+                <div class="polaroid-card rotate-right">
+                    <img src="https://picsum.photos/400/400?random=3" alt="Воспоминание 3">
+                    <p class="caption">Скоро увидимся снова 🤍</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Leaflet JS (Карта) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
