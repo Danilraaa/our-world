@@ -11,14 +11,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Фоновая музыка -->
-    <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+    <!-- Фоновая музыка с явным указанием типа -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="./music.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
-        <!-- Заголовок, Музыка и Секундомер -->
+        <!-- Шапка с кнопкой строго по центру -->
         <header class="header">
             <div class="music-player">
-                <button id="music-btn" class="music-toggle-btn">🎵 Включить музыку</button>
+                <button id="music-btn" class="music-toggle-btn" type="button">🎵 Включить музыку</button>
             </div>
 
             <h1>Мы вместе уже ✨</h1>
@@ -29,6 +31,8 @@
                 <div class="time-unit"><span id="seconds">0</span><label>Секунд</label></div>
             </div>
         </header>
+
+        <!-- Дальше идет ваш остальной код (Карта и Галерея) -->
 
         <!-- Интерактивная Карта -->
         <section class="map-section">
