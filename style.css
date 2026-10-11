@@ -74,33 +74,37 @@ h1, h2 {
 
 /* Секундомер */
 .timer-box {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Ровно 4 равные колонки */
+    gap: 8px;
     background: var(--card-bg);
-    padding: 14px;
+    padding: 16px 8px;
     border-radius: 18px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     margin-bottom: 24px;
+    width: 100%;
 }
 
 .time-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .time-unit span {
-    font-size: 1.4rem;
+    font-size: 1.25rem; /* Чуть уменьшаем размер, чтобы 3 цифры свободно влезали */
     font-weight: 700;
     color: var(--accent-color);
+    line-height: 1.2;
 }
 
 .time-unit label {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     opacity: 0.75;
     margin-top: 4px;
+    white-space: nowrap; /* Запрещаем разрыв слов */
 }
-
 /* Карта */
 .map-section {
     margin-bottom: 28px;
