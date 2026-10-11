@@ -24,15 +24,16 @@ body {
     width: 100%;
     max-width: 480px;
     padding: 16px;
-    margin: 0 auto; /* Центрируем сам контейнер */
+    margin: 0 auto;
 }
 
+/* Шапка и плеер */
 .header {
     width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центрируем все элементы внутри шапки */
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -57,7 +58,7 @@ body {
     box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
     transition: transform 0.2s ease, background 0.3s ease;
     display: inline-block;
-    margin: 0 auto; /* Заставляем кнопку встать ровно по центру */
+    margin: 0 auto;
 }
 
 .music-toggle-btn:active {
@@ -74,11 +75,11 @@ h1, h2 {
 
 /* Секундомер */
 .timer-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Ровно 4 равные колонки */
-    gap: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: var(--card-bg);
-    padding: 16px 8px;
+    padding: 14px 8px;
     border-radius: 18px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     margin-bottom: 24px;
@@ -86,88 +87,28 @@ h1, h2 {
 }
 
 .time-unit {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 0;
 }
 
 .time-unit span {
-    font-size: 1.25rem; /* Чуть уменьшаем размер, чтобы 3 цифры свободно влезали */
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .time-unit label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     opacity: 0.75;
     margin-top: 4px;
-    white-space: nowrap; /* Запрещаем разрыв слов */
+    white-space: nowrap;
 }
+
 /* Карта */
-.map-section {
-    margin-bottom: 28px;
-}
-
-#map {
-    height: 250px;
-    width: 100%;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-}
-
-/* Polaroid Галерея */
-.gallery-section {
-    margin-bottom: 40px;
-}
-
-.polaroid-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    align-items: center;
-}
-
-.polaroid-card {
-    background: #ffffff;
-    padding: 12px 12px 20px 12px;
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-    width: 90%;
-    max-width: 380px;
-    transition: transform 0.3s ease;
-}
-
-.polaroid-card img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 3px;
-    display: block;
-}
-
-.polaroid-card .caption {
-    color: #1e293b;
-    font-size: 0.95rem;
-    text-align: center;
-    margin-top: 12px;
-    margin-bottom: 0;
-    line-height: 1.35;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Casual', cursive, sans-serif;
-}
-
-/* Поочередный поворот карточек */
-.rotate-left {
-    transform: rotate(-2deg);
-}
-
-.rotate-right {
-    transform: rotate(2deg);
-}
-
-.polaroid-card:active {
-    transform: scale(1.02) rotate(0deg);
-}
+.map
