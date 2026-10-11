@@ -76,39 +76,106 @@ h1, h2 {
 /* Секундомер */
 .timer-box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background: var(--card-bg);
-    padding: 14px 8px;
+    padding: 16px 8px;
     border-radius: 18px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-    margin-bottom: 24px;
+    margin: 0 auto 24px auto;
     width: 100%;
+    max-width: 360px;
 }
 
 .time-unit {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 0;
+    flex: 1;
+    text-align: center;
 }
 
 .time-unit span {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--accent-color);
-    line-height: 1.2;
-    white-space: nowrap;
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
 }
 
-.time-unit label {
-    font-size: 0.68rem;
-    opacity: 0.75;
-    margin-top: 4px;
+.time-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin: 0;
+    padding: 0;
     white-space: nowrap;
 }
 
 /* Карта */
-.map
+.map-section {
+    margin-bottom: 28px;
+}
+
+#map {
+    height: 250px;
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Polaroid Галерея */
+.gallery-section {
+    margin-bottom: 40px;
+}
+
+.polaroid-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+}
+
+.polaroid-card {
+    background: #ffffff;
+    padding: 12px 12px 20px 12px;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    width: 90%;
+    max-width: 380px;
+    transition: transform 0.3s ease;
+}
+
+.polaroid-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+}
+
+.polaroid-card .caption {
+    color: #1e293b;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 0;
+    line-height: 1.35;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Casual', cursive, sans-serif;
+}
+
+/* Поочередный поворот карточек */
+.rotate-left {
+    transform: rotate(-2deg);
+}
+
+.rotate-right {
+    transform: rotate(2deg);
+}
+
+.polaroid-card:active {
+    transform: scale(1.02) rotate(0deg);
+}
