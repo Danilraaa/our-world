@@ -57,3 +57,22 @@ document.querySelectorAll('.polaroid-card').forEach(card => {
         }
     });
 });
+// Логика музыки
+const music = document.getElementById('bg-music');
+const musicBtn = document.getElementById('music-btn');
+
+if (musicBtn && music) {
+    musicBtn.addEventListener('click', function () {
+        if (music.paused) {
+            music.play().then(() => {
+                musicBtn.innerText = '⏸ Пауза';
+            }).catch((error) => {
+                console.error("Ошибка воспроизведения:", error);
+                alert("Не удалось загрузить файл music.mp3. Проверь, загружен ли он на GitHub!");
+            });
+        } else {
+            music.pause();
+            musicBtn.innerText = '🎵 Включить музыку';
+        }
+    });
+}
