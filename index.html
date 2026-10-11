@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Фоновая музыка -->
+    <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+
     <div class="container">
-        <!-- Заголовок и Секундомер -->
+        <!-- Заголовок, Музыка и Секундомер -->
         <header class="header">
-            <!-- Фоновая музыка и кнопка управления -->
-            <audio id="bg-music" src="music.mp3" loop></audio>
-            
             <div class="music-player">
                 <button id="music-btn" class="music-toggle-btn">🎵 Включить музыку</button>
             </div>
+
             <h1>Мы вместе уже ✨</h1>
             <div id="timer" class="timer-box">
                 <div class="time-unit"><span id="days">0</span><label>Дней</label></div>
@@ -34,66 +35,67 @@
             <h2>Расстояние — лишь цифры 📍</h2>
             <div id="map"></div>
         </section>
+
         <!-- Polaroid Галерея -->
         <section class="gallery-section">
             <h2>Наши Моменты 📸</h2>
             <div class="polaroid-grid">
-                <div class="polaroid-card">
-                    <img src="photo/1.jpg" alt="Воспоминание 1">
-                    <p class="caption">Я обожа. тебя малышка 😊</p>
-                </div>
                 <div class="polaroid-card rotate-left">
+                    <img src="photo/1.jpg" alt="Воспоминание 1">
+                    <p class="caption">Я обожаю тебя, малышка 😊</p>
+                </div>
+                <div class="polaroid-card rotate-right">
                     <img src="photo/2.jpg" alt="Воспоминание 2">
                     <p class="caption">Самый вкусный пирожок с вишней ☕</p>
                 </div>
-                <div class="polaroid-card rotate-right">
+                <div class="polaroid-card rotate-left">
                     <img src="photo/3.jpg" alt="Воспоминание 3">
                     <p class="caption">Маленькая пися 🤍</p>
                 </div>
                 <div class="polaroid-card rotate-right">
-                    <img src="photo/4.jpg" alt="Воспоминание 3">
-                    <p class="caption">Люблю тебя заец мармеладный</p>
+                    <img src="photo/4.jpg" alt="Воспоминание 4">
+                    <p class="caption">Люблю тебя, заяц мармеладный</p>
                 </div>
-                <div class="polaroid-card rotate-right">
-                    <img src="photo/5.jpg" alt="Воспоминание 3">
+                <div class="polaroid-card rotate-left">
+                    <img src="photo/5.jpg" alt="Воспоминание 5">
                     <p class="caption">Скоро увидимся снова 💕</p>
                 </div>
-                <div class="polaroid-card">
-                    <img src="photo/6.jpg" alt="Воспоминание 1">
+                <div class="polaroid-card rotate-right">
+                    <img src="photo/6.jpg" alt="Воспоминание 6">
                     <p class="caption">Тот самый лучший день с тобой ✨</p>
                 </div>
                 <div class="polaroid-card rotate-left">
-                    <img src="photo/7.jpg" alt="Воспоминание 2">
-                    <p class="caption">Моя жопка сладющая😚</p>
+                    <img src="photo/7.jpg" alt="Воспоминание 7">
+                    <p class="caption">Моя жопка сладющая 😚</p>
                 </div>
                 <div class="polaroid-card rotate-right">
-                    <img src="photo/8.jpg" alt="Воспоминание 3">
-                    <p class="caption">Я тебя обожаю ужасно малышня моя любимая❤️</p>
+                    <img src="photo/8.jpg" alt="Воспоминание 8">
+                    <p class="caption">Я тебя обожаю ужасно, малышня моя любимая ❤️</p>
                 </div>
-                <div class="polaroid-card rotate-right">
-                    <img src="photo/9.jpg" alt="Воспоминание 3">
+                <div class="polaroid-card rotate-left">
+                    <img src="photo/9.jpg" alt="Воспоминание 9">
                     <p class="caption">🗝️ «Ты — главное событие моей жизни.»</p>
                 </div>
                 <div class="polaroid-card rotate-right">
-                    <img src="photo/10.jpg" alt="Воспоминание 3">
+                    <img src="photo/10.jpg" alt="Воспоминание 10">
                     <p class="caption">🌌 «Ты — весь мой мир.»</p>
                 </div>
                 <div class="polaroid-card rotate-left">
-                    <img src="photo/11.jpg" alt="Воспоминание 2">
-                    <p class="caption">Я обожаю тебя кроля🐇</p>
+                    <img src="photo/11.jpg" alt="Воспоминание 11">
+                    <p class="caption">Я обожаю тебя, кроля 🐇</p>
                 </div>
                 <div class="polaroid-card rotate-right">
-                    <img src="photo/12.jpg" alt="Воспоминание 3">
-                    <p class="caption">Мы навсегда😏</p>
+                    <img src="photo/12.jpg" alt="Воспоминание 12">
+                    <p class="caption">Мы навсегда 😏</p>
+                </div>
+                <div class="polaroid-card rotate-left">
+                    <img src="photo/13.jpg" alt="Воспоминание 13">
+                    <p class="caption">Обожаю твое тело 😏</p>
                 </div>
                 <div class="polaroid-card rotate-right">
-                    <img src="photo/13.jpg" alt="Воспоминание 3">
-                    <p class="caption">Обожаю твое тело😏</p>
-                </div>
-                <div class="polaroid-card rotate-right">
-                    <img src="photo/14.jpg" alt="Воспоминание 3">
+                    <img src="photo/14.jpg" alt="Воспоминание 14">
                     <p class="caption">Ты мой самый вкусный ужин 😍</p>
-                </div>                
+                </div>
             </div>
         </section>
     </div>
