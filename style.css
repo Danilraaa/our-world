@@ -336,7 +336,8 @@ h1, h2 {
     transition: transform 0.3s ease;
 }
 
-.polaroid-card img {
+.polaroid-card img,
+.polaroid-card video {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
