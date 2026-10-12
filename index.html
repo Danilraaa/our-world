@@ -8,7 +8,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- Leaflet CSS (Карта) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
     <!-- Фоновая музыка -->
@@ -47,6 +47,16 @@
             <h2>Карта Памятных Мест 📍</h2>
             <p class="map-subtitle">Нажми на метку, чтобы открыть воспоминание ✨</p>
             <div id="map"></div>
+        </section>
+
+        <!-- Секция с конвертом (Письмо) -->
+        <section class="letter-section">
+            <h2>Особое Послание ✉️</h2>
+            <div id="envelope-btn" class="envelope-card">
+                <div class="envelope-icon">💌</div>
+                <p class="envelope-title">Тебе письмо, открывай скорее!</p>
+                <span class="envelope-sub">Нажми, чтобы прочесть ✨</span>
+            </div>
         </section>
 
         <!-- Мини-игра "Поймай Любовь" -->
@@ -161,8 +171,25 @@
         </div>
     </div>
 
+    <!-- Модальное окно с Письмом -->
+    <div id="letter-modal" class="modal">
+        <div class="modal-content letter-modal-content">
+            <span id="close-letter-btn" class="close-letter-x">&times;</span>
+            <div class="paper-letter">
+                <h3>Моей самой любимой 🤍</h3>
+                <div class="letter-body">
+                    <p>Моя дорогая и самая любимая девочка!</p>
+                    <p>Я создавал этот маленький сайт с мысли о том, насколько ты важна для меня. Пусть нас разделяют километры, но с каждым днём моя любовь к тебе становится только сильнее.</p>
+                    <p>Спасибо тебе за твою нежность, за твой смех, за поддержку и за то, что ты делаешь мою жизнь яркой и наполненной смыслом. Каждая наша встреча, каждый созвон и каждое мгновение вместе для меня — огромная ценность.</p>
+                    <p>Помни, что где бы я ни был, я всегда рядом с тобой душой. Ты — мой главный человек, мой уют и мой дом.</p>
+                    <p class="letter-signature">Крепко обнимаю и люблю тебя безумно! ❤️</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Leaflet JS (Карта) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="app.js?v=13"></script>
+    <script src="app.js?v=14"></script>
 </body>
 </html>
