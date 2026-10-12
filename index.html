@@ -8,7 +8,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- Leaflet CSS (Карта) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
     <!-- Фоновая музыка -->
@@ -47,6 +47,26 @@
             <h2>Карта Памятных Мест 📍</h2>
             <p class="map-subtitle">Нажми на метку, чтобы открыть воспоминание ✨</p>
             <div id="map"></div>
+        </section>
+
+        <!-- Мини-игра "Поймай Любовь" -->
+        <section class="game-section">
+            <h2>Мини-игра: Поймай Любовь 💖</h2>
+            <div class="game-card">
+                <p class="game-desc">Cобери 10 сердечек за 15 секунд, чтобы открыть секретную открытку!</p>
+                
+                <div id="game-container" class="game-container">
+                    <div id="basket" class="basket">🧺</div>
+                    <div id="game-overlay" class="game-overlay">
+                        <button id="start-game-btn" class="game-btn">▶ Начать игру</button>
+                    </div>
+                </div>
+
+                <div class="game-stats">
+                    <span>Счёт: <strong id="score">0</strong>/10</span>
+                    <span>Время: <strong id="game-timer">15</strong>с</span>
+                </div>
+            </div>
         </section>
 
         <!-- Polaroid Галерея -->
@@ -113,8 +133,20 @@
         </section>
     </div>
 
+    <!-- Модальное окно с победой -->
+    <div id="win-modal" class="modal">
+        <div class="modal-content">
+            <h3>Ты победила! 🏆💖</h3>
+            <p>Ты поймала всю мою любовь! Забирай секретную награду:</p>
+            <div class="secret-card">
+                <p>💌 <strong>Сертификат:</strong> «Исполнение любого желания по первому требованию!»</p>
+            </div>
+            <button id="close-modal-btn" class="game-btn">Закрыть ✨</button>
+        </div>
+    </div>
+
     <!-- Leaflet JS (Карта) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=11"></script>
 </body>
 </html>
