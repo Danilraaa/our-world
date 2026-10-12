@@ -30,7 +30,7 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 updateTimer();
 
-// 2. ИНИЦИАЛИЗА КАРТЫ
+// 2. ИНИЦИАЛИЗА КАРТЫ С СЕРДЕЧКАМИ
 function initMap() {
     const CITY_1 = [48.6482, 9.4512];  // Кирхайм
     const CITY_2 = [50.4501, 30.5234]; // Киев
@@ -45,8 +45,16 @@ function initMap() {
         attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
+    // Кастомный маркер-сердечко
+    const heartIcon = L.divIcon({
+        className: 'custom-heart-marker',
+        html: '💖',
+        iconSize: [30, 30],
+        iconAnchor: [15, 15]
+    });
+
     function addPoint(coords, title, text, photo) {
-        L.marker(coords).addTo(map).bindPopup(`
+        L.marker(coords, { icon: heartIcon }).addTo(map).bindPopup(`
             <div class="map-popup">
                 <img src="${photo}" alt="${title}">
                 <h4>${title}</h4>
@@ -89,5 +97,123 @@ if (musicBtn && music) {
             music.pause();
             musicBtn.innerText = '🎵 Включить музыку';
         }
+    });
+}
+
+// 4. МИНИ-ИГРА "ПОЙМАЙ СЕРДЕЧКИ"
+const container = document.getElementById('game-container');
+const basket = document.getElementById('basket');
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('game-timer');
+const overlay = document.getElementById('game-overlay');
+const startBtn = document.getElementById('start-game-btn');
+const modal = document.getElementById('win-modal');
+const closeModalBtn = document.getElementById('close-modal-btn');
+
+let score = 0;
+let timeLeft = 15;
+let gameInterval, spawnInterval;
+let isPlaying = false;
+
+function moveBasket(e) {
+    if (!isPlaying || !container || !basket) return;
+    const rect = container.getBoundingClientRect();
+    let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left - (basket.offsetWidth / 2);
+    x = Math.max(0, Math.min(x, container.clientWidth - basket.offsetWidth));
+    basket.style.left = x + 'px';
+}
+
+if (container) {
+    container.addEventListener('mousemove', moveBasket);
+    container.addEventListener('touchmove', moveBasket);
+}
+
+function startGame() {
+    score = 0;
+    timeLeft = 15;
+    isPlaying = true;
+    if (scoreEl) scoreEl.innerText = score;
+    if (timerEl) timerEl.innerText = timeLeft;
+    if (overlay) overlay.style.display = 'none';
+
+    spawnInterval = setInterval(createHeart, 600);
+
+    gameInterval = setInterval(() => {
+        timeLeft--;
+        if (timerEl) timerEl.innerText = timeLeft;
+        if (timeLeft <= 0) {
+            endGame();
+        }
+    }, 1000);
+}
+
+function createHeart() {
+    if (!isPlaying || !container) return;
+    const heart = document.createElement('div');
+    heart.classList.add('falling-heart');
+    heart.innerText = ['💖', '💗', '❤️', '💕'][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * (container.clientWidth - 30) + 'px';
+    container.appendChild(heart);
+
+    let top = 0;
+    const fallInterval = setInterval(() => {
+        if (!isPlaying) {
+            clearInterval(fallInterval);
+            heart.remove();
+            return;
+        }
+        top += 4;
+        heart.style.top = top + 'px';
+
+        if (basket) {
+            const bRect = basket.getBoundingClientRect();
+            const hRect = heart.getBoundingClientRect();
+
+            if (
+                hRect.bottom >= bRect.top &&
+                hRect.top <= bRect.bottom &&
+                hRect.right >= bRect.left &&
+                hRect.left <= bRect.right
+            ) {
+                score++;
+                if (scoreEl) scoreEl.innerText = score;
+                clearInterval(fallInterval);
+                heart.remove();
+
+                if (score >= 10) {
+                    endGame(true);
+                }
+            }
+        }
+
+        if (top > container.clientHeight) {
+            clearInterval(fallInterval);
+            heart.remove();
+        }
+    }, 20);
+}
+
+function endGame(win = false) {
+    isPlaying = false;
+    clearInterval(gameInterval);
+    clearInterval(spawnInterval);
+    document.querySelectorAll('.falling-heart').forEach(h => h.remove());
+
+    if (win) {
+        if (modal) modal.style.display = 'flex';
+        if (overlay) overlay.style.display = 'none';
+    } else {
+        alert('Время вышло! Попробуй еще раз 💕');
+        if (overlay) overlay.style.display = 'flex';
+        if (startBtn) startBtn.innerText = '🔄 Попробовать снова';
+    }
+}
+
+if (startBtn) startBtn.addEventListener('click', startGame);
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        if (modal) modal.style.display = 'none';
+        if (overlay) overlay.style.display = 'flex';
+        if (startBtn) startBtn.innerText = '▶ Играть снова';
     });
 }
