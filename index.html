@@ -42,10 +42,30 @@
             </div>
         </header>
 
-        <!-- Интерактивная Карта -->
+        <!-- Интерактивная Карта Воспоминаний -->
         <section class="map-section">
-            <h2>Расстояние — лишь цифры 📍</h2>
+            <h2>Карта Наших Мест 📍</h2>
             <div id="map"></div>
+        </section>
+
+        <!-- Мини-игра "Поймай Сердечки" -->
+        <section class="game-section">
+            <h2>Мини-игра: Поймай Любовь 💖</h2>
+            <div class="game-card">
+                <p class="game-desc">Cобери 10 сердечек за 15 секунд, чтобы открыть секретную открытку!</p>
+                
+                <div id="game-container" class="game-container">
+                    <div id="basket" class="basket">🧺</div>
+                    <div id="game-overlay" class="game-overlay">
+                        <button id="start-game-btn" class="game-btn">▶ Начать игру</button>
+                    </div>
+                </div>
+
+                <div class="game-stats">
+                    <span>Счёт: <strong id="score">0</strong>/10</span>
+                    <span>Время: <strong id="game-timer">15</strong>с</span>
+                </div>
+            </div>
         </section>
 
         <!-- Polaroid Галерея -->
@@ -110,6 +130,18 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    <!-- Модальное окно с открыткой за победу в игре -->
+    <div id="win-modal" class="modal">
+        <div class="modal-content">
+            <h3>Ты победила! 🏆💖</h3>
+            <p>Ты поймала всю мою любовь! Забирай свою секретную награду:</p>
+            <div class="secret-card">
+                <p>💌 <strong>Сертификат:</strong> «Исполнение любого желания по первому требованию!»</p>
+            </div>
+            <button id="close-modal-btn" class="game-btn">Закрыть ✨</button>
+        </div>
     </div>
 
     <!-- Leaflet JS (Карта) -->
