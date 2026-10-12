@@ -53,16 +53,27 @@ function initMap() {
         iconAnchor: [15, 15]
     });
 
-    function addPoint(coords, title, text, photo) {
+    // Функция авто-определения фото или видео
+    function addPoint(coords, title, text, mediaPath) {
+        const isVideo = /\.(mp4|webm|mov)$/i.test(mediaPath);
+        let mediaHtml = '';
+
+        if (isVideo) {
+            mediaHtml = `<video src="${mediaPath}" controls playsinline preload="metadata"></video>`;
+        } else {
+            mediaHtml = `<img src="${mediaPath}" alt="${title}">`;
+        }
+
         L.marker(coords, { icon: heartIcon }).addTo(map).bindPopup(`
             <div class="map-popup">
-                <img src="${photo}" alt="${title}">
+                ${mediaHtml}
                 <h4>${title}</h4>
                 <p>${text}</p>
             </div>
         `);
     }
 
+    // Твои точки и медиа
     addPoint(CITY_1, "Кирхайм 🇩🇪", "Я скучаю тут, скоро вернусь! 🤍", "photo/1.jpg");
     addPoint([50.403162, 30.612843], "Парк Ривера ✨", "Наши самые теплые прогулки в самую холодную пору!", "photo/video.mp4");
     addPoint([50.4590, 30.5255], "Подол ☕", "Уютные вечера и вкусный кофе.", "photo/3.jpg");
