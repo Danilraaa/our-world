@@ -229,3 +229,20 @@ if (closeModalBtn) {
         if (startBtn) startBtn.innerText = '▶ Играть снова';
     });
 }
+
+// 5. УПРАВЛЕНИЕ ОКНОМ ПИСЬМА (Secret Note)
+const envelopeBtn = document.getElementById('envelope-btn');
+const letterModal = document.getElementById('letter-modal');
+const closeLetterBtn = document.getElementById('close-letter-btn');
+
+if (envelopeBtn && letterModal) {
+    envelopeBtn.addEventListener('click', () => {
+        letterModal.style.display = 'flex';
+    });
+}
+
+if (closeLetterBtn && letterModal) {
+    closeLetterBtn.addEventListener('click', () => {
+        letterModal.style.display = 'none';
+    });
+}
