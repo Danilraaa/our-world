@@ -99,19 +99,19 @@ const playlist = [
     {
         title: "Наш любимый трек",
         artist: "Для моей заи 🤍",
-        src: "musik.mp3",
+        src: "musik/musik.mp3",
         cover: "💖"
     },
     {
         title: "Романтический вечер",
         artist: "Наши воспоминания ✨",
-        src: "musik2.mp3",
+        src: "musik/musik2.mp3",
         cover: "🎶"
     },
     {
         title: "Особый момент",
         artist: "Только для нас 💕",
-        src: "musik3.mp3",
+        src: "musik/musik3.mp3",
         cover: "🎧"
     }
 ];
