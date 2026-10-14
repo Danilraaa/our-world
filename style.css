@@ -37,32 +37,117 @@ body {
     margin-bottom: 20px;
 }
 
-.music-player {
+/* Стили Музыкального Плеера */
+.player-card {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 360px;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(244, 63, 94, 0.2);
+    margin-bottom: 20px;
+}
+
+.player-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.track-cover {
+    width: 44px;
+    height: 44px;
+    background: #0f172a;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 16px;
+    font-size: 1.4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.music-toggle-btn, .game-btn {
-    background: linear-gradient(135deg, #f43f5e, #e11d48);
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
+.track-info {
+    overflow: hidden;
+}
+
+.track-title {
     font-size: 0.95rem;
     font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
-    transition: transform 0.2s ease;
-    display: inline-block;
-    margin: 0 auto;
+    color: #f8fafc;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.music-toggle-btn:active, .game-btn:active {
-    transform: scale(0.95);
+.track-artist {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* Полоса прогресса */
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: #0f172a;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #f43f5e, #e11d48);
+    border-radius: 10px;
+    transition: width 0.1s linear;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+/* Кнопки управления плеера */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.control-btn {
+    background: #0f172a;
+    color: #f8fafc;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.control-btn:active {
+    transform: scale(0.9);
+}
+
+.main-play-btn {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #f43f5e, #e11d48);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4);
 }
 
 h1, h2 {
