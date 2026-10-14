@@ -8,17 +8,40 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- Leaflet CSS (Карта) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
-    <!-- Фоновая музыка -->
-    <audio id="bg-music" src="musik.mp3" loop preload="auto"></audio>
+    <!-- Элемент аудио для работы плеера -->
+    <audio id="bg-music" preload="auto"></audio>
 
     <div class="container">
-        <!-- Шапка с кнопкой музыки и таймером -->
+        <!-- Шапка с интерактивным музыкальным плеером и таймером -->
         <header class="header">
-            <div class="music-player">
-                <button id="music-btn" class="music-toggle-btn" type="button">🎵 Включить музыку</button>
+            <!-- Музыкальный Плеер -->
+            <div class="player-card">
+                <div class="player-top">
+                    <div class="track-cover" id="track-cover">🎵</div>
+                    <div class="track-info">
+                        <div class="track-title" id="track-title">Наш любимый трек</div>
+                        <div class="track-artist" id="track-artist">Любимая музыка 🤍</div>
+                    </div>
+                </div>
+
+                <!-- Полоса прогресса (Progress Bar) -->
+                <div class="progress-container" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="time-display">
+                    <span id="current-time">0:00</span>
+                    <span id="duration-time">0:00</span>
+                </div>
+
+                <!-- Кнопки управления -->
+                <div class="player-controls">
+                    <button id="prev-btn" class="control-btn" type="button">⏮</button>
+                    <button id="play-btn" class="control-btn main-play-btn" type="button">▶</button>
+                    <button id="next-btn" class="control-btn" type="button">⏭</button>
+                </div>
             </div>
 
             <h1>Мы вместе уже ✨</h1>
@@ -202,6 +225,6 @@
 
     <!-- Leaflet JS (Карта) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="app.js?v=14"></script>
+    <script src="app.js?v=15"></script>
 </body>
 </html>
