@@ -53,7 +53,7 @@ function initMap() {
         iconAnchor: [15, 15]
     });
 
-    // Функция автоопределения медиа (видео проигрывается автоматически без звука)
+    // Функция автоопределения медиа
     function addPoint(coords, title, text, mediaPath) {
         const isVideo = /\.(mp4|webm|mov)$/i.test(mediaPath);
         let mediaHtml = '';
@@ -94,23 +94,133 @@ if (document.readyState === 'loading') {
     initMap();
 }
 
-// 3. МУЗЫКА
-const music = document.getElementById('bg-music');
-const musicBtn = document.getElementById('music-btn');
+// 3. МУЗЫКАЛЬНЫЙ ПЛЕЕР С ПЛЕЙЛИСТОМ
+const playlist = [
+    {
+        title: "Наш любимый трек",
+        artist: "Для моей заи 🤍",
+        src: "musik.mp3",
+        cover: "💖"
+    },
+    {
+        title: "Романтический вечер",
+        artist: "Наши воспоминания ✨",
+        src: "musik2.mp3",
+        cover: "🎶"
+    },
+    {
+        title: "Особый момент",
+        artist: "Только для нас 💕",
+        src: "musik3.mp3",
+        cover: "🎧"
+    }
+];
 
-if (musicBtn && music) {
-    music.volume = 0.3;
-    musicBtn.addEventListener('click', function () {
-        if (music.paused) {
-            music.play().then(() => {
-                musicBtn.innerText = '⏸ Пауза';
-            }).catch(() => {});
+let currentTrackIndex = 0;
+const audio = document.getElementById('bg-music');
+const playBtn = document.getElementById('play-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const trackTitle = document.getElementById('track-title');
+const trackArtist = document.getElementById('track-artist');
+const trackCover = document.getElementById('track-cover');
+const progressBar = document.getElementById('progress-bar');
+const progressContainer = document.getElementById('progress-container');
+const currentTimeEl = document.getElementById('current-time');
+const durationTimeEl = document.getElementById('duration-time');
+
+function loadTrack(index) {
+    const track = playlist[index];
+    if (!track) return;
+    
+    if (audio) {
+        audio.src = track.src;
+        audio.volume = 0.3;
+    }
+    if (trackTitle) trackTitle.innerText = track.title;
+    if (trackArtist) trackArtist.innerText = track.artist;
+    if (trackCover) trackCover.innerText = track.cover;
+}
+
+function playTrack() {
+    if (!audio) return;
+    audio.play().then(() => {
+        if (playBtn) playBtn.innerText = '⏸';
+    }).catch(() => {});
+}
+
+function pauseTrack() {
+    if (!audio) return;
+    audio.pause();
+    if (playBtn) playBtn.innerText = '▶';
+}
+
+if (playBtn && audio) {
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            playTrack();
         } else {
-            music.pause();
-            musicBtn.innerText = '🎵 Включить музыку';
+            pauseTrack();
         }
     });
 }
+
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrackIndex);
+        playTrack();
+    });
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        playTrack();
+    });
+}
+
+// Форматирование секунд в минуты (0:00)
+function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+if (audio) {
+    // Обновление прогресс-бара и времени
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            if (progressBar) progressBar.style.width = `${progressPercent}%`;
+            if (currentTimeEl) currentTimeEl.innerText = formatTime(audio.currentTime);
+            if (durationTimeEl) durationTimeEl.innerText = formatTime(audio.duration);
+        }
+    });
+
+    // Переход на следующий трек после окончания
+    audio.addEventListener('ended', () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        playTrack();
+    });
+}
+
+// Клик по прогресс-бару для перемотки
+if (progressContainer && audio) {
+    progressContainer.addEventListener('click', (e) => {
+        const width = progressContainer.clientWidth;
+        const clickX = e.offsetX;
+        if (audio.duration) {
+            audio.currentTime = (clickX / width) * audio.duration;
+        }
+    });
+}
+
+// Инициализация первого трека
+loadTrack(currentTrackIndex);
 
 // 4. МИНИ-ИГРА "ПОЙМАЙ СЕРДЕЧКИ"
 const container = document.getElementById('game-container');
